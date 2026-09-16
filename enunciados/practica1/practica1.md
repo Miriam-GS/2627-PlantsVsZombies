@@ -380,9 +380,9 @@ El programa debe aceptar un parámetro obligatorio y uno opcional por línea de 
 
 ## 3.2 Clases que componen nuestra aplicación
 
-Para lanzar la aplicación se ejecutará la clase `tp1.pvz.PlantsVsZombies`,
-por lo que se aconseja que todas las clases desarrolladas en la práctica estén en el paquete `tp1.pvz` (o subpaquetes
-suyos). Para implementar la práctica necesitarás, al menos, las siguientes clases:
+Para lanzar la aplicación se ejecutará la clase `pvz.PlantsVsZombies`,
+por lo que se aconseja que todas las clases desarrolladas en la práctica estén en el paquete `pvz` (o subpaquetes
+suyos), salvo que el profesor indique lo contrario. Para implementar la práctica necesitarás, al menos, las siguientes clases:
 
 - `Sunflower`, `Peashooter`, `Zombie`: Estas tres clases encapsulan el comportamiento de los elementos del juego (*game
   objects*). Tienen atributos privados, como su posición `col, row`, su vida, etc. También tienen un atributo en el que
@@ -439,7 +439,7 @@ También necesitaremos las siguientes clases:
 - Durante la ejecución de la aplicación solo se creará un objeto de la clase `Controller`. Lo mismo ocurre para la clase
   `Game` (que representa la partida en curso y solo puede haber una activa).
 
-- Junto con la práctica os proporcionaremos unas plantillas con partes del código.
+- Junto con la práctica os proporcionaremos unas [plantillas](./plantillas/practica1/src) con partes del código.
 
 - En los ficheros de pruebas podrás encontrar trazas de la ejecución; la salida de la práctica debe coincidir con los
   ejemplos.
@@ -483,11 +483,11 @@ se comprueba que el flujo del juego es el adecuado
 > Proyecto > Propiedades > Java Build Path > pestaña Librerías > Añadir Librería > JUnit 5
 
 ## Test unitarios
-Se encuentran en `src/main/test/tp1`. De momento incluyen test de los componentes desarrollados en la primera
+Se encuentran en `src/test/`. De momento incluyen test de los componentes desarrollados en la primera
 práctica, pero irán creciendo con el tiempo.
 
 ## Test completos
-Verás que hay ciertos ficheros de texto dentro de `src/main/test/complete`, con la siguiente nomenclatura:
+Verás que hay ciertos ficheros de texto dentro de `src/test/resources`, con la siguiente nomenclatura:
 
 - `00-easy_25-input.txt`: es la entrada del caso de prueba `0` con nivel `easy` y semilla `25`.
 - `00-easy_25-expected.txt`: es la salida esperada para la entrada anterior.

@@ -1,12 +1,16 @@
-package tp1.pvz.control;
+//package pvz.control;
+package test;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tp1.pvz.logic.Game;
-import tp1.pvz.logic.gameobjects.Peashooter;
-import tp1.pvz.logic.gameobjects.Sunflower;
-import tp1.pvz.view.Messages;
+
+import pvz.control.Controller;
+import pvz.control.Level;
+import pvz.logic.Game;
+import pvz.logic.gameobjects.Peashooter;
+import pvz.logic.gameobjects.Sunflower;
+import pvz.view.Messages;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -335,7 +339,7 @@ class ControllerTest {
         run(game, "add p 0 0\nadd s 0 1\nexit\n"); // second add has no coins
         assertEquals(expectedCoins, game.getCoins());
         // The sunflower at (0, 1) should not have been placed, so its position is empty
-        assertTrue(game.isEmpty(new tp1.utils.Position(0, 1)));
+        assertTrue(game.isEmpty(new utils.Position(0, 1)));
     }
 
     @Test

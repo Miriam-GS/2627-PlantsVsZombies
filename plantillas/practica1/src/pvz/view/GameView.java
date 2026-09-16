@@ -1,4 +1,4 @@
-package tp1.pvz.view;
+package pvz.view;
 
 public interface GameView {
   // show methods

@@ -1,7 +1,7 @@
-package complete;
+package test;
 
-import tp1.pvz.PlantsVsZombies;
-import tp1.pvz.logic.Game;
+import pvz.PlantsVsZombies;
+import pvz.logic.Game;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;

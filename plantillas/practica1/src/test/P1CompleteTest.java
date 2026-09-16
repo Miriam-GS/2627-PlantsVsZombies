@@ -1,11 +1,11 @@
-package complete;
+package test;
 
 import org.junit.jupiter.api.Test;
 
 public class P1CompleteTest extends CompleteTest {
 
   public P1CompleteTest() {
-    super("p1");
+    super("test/resources");
   }
 
   @Test

@@ -1,9 +1,12 @@
-package tp1.pvz.logic;
+//package pvz.logic;
+package test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tp1.pvz.control.Level;
-import tp1.utils.Position;
+
+import pvz.logic.Game;
+import pvz.control.Level;
+import pvz.utils.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
 

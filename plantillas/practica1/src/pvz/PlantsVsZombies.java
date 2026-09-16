@@ -1,11 +1,11 @@
-package tp1.pvz;
+package pvz;
 
 import java.util.Locale;
 
-import tp1.pvz.control.Controller;
-import tp1.pvz.control.Level;
-import tp1.pvz.logic.Game;
-import tp1.pvz.view.Messages;
+import pvz.control.Controller;
+import pvz.control.Level;
+import pvz.logic.Game;
+import pvz.view.Messages;
 
 /**
  * Application entry point.

@@ -1,6 +1,13 @@
-package tp1.utils;
+package utils;
 
-/**  
+/**
+ * Utility methods for fixed-width string formatting used by the view layer.
+ *
+ * <p>Provides character/string repetition ({@link #repeat}) and centre-padding
+ * ({@link #centre}) to build the aligned board cells in
+ * {@link tp1.pvz.view.GamePrinter}. This class is not instantiable; all methods
+ * are static.
+ *
  * @author Simon Pickin
  * @author Ivan Martinez-Ortiz
  */

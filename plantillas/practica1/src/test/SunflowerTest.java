@@ -1,10 +1,11 @@
-package tp1.pvz.logic.gameobjects;
+package test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tp1.pvz.control.Level;
-import tp1.pvz.logic.Game;
-import tp1.utils.Position;
+import pvz.control.Level;
+import pvz.logic.Game;
+import pvz.logic.gameobjects.Sunflower;
+import pvz.utils.Position;
 
 import static org.junit.jupiter.api.Assertions.*;
 

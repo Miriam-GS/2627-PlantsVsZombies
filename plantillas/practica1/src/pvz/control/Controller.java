@@ -1,9 +1,9 @@
-package tp1.pvz.control;
+package pvz.control;
 
-import tp1.pvz.logic.Game;
-import tp1.pvz.view.GamePrinter;
-import tp1.pvz.view.GameView;
-import tp1.pvz.view.Messages;
+import pvz.logic.Game;
+import pvz.view.GamePrinter;
+import pvz.view.GameView;
+import pvz.view.Messages;
 
 /**
  * Input/output coordinator of the game (the C in MVC).

@@ -1,10 +1,10 @@
-package tp1.pvz.logic;
+package pvz.logic;
 
 import java.util.Random;
 
-import tp1.pvz.control.Level;
-import tp1.pvz.logic.gameobjects.Zombie;
-import tp1.pvz.logic.gameobjects.ZombieList;
+import pvz.control.Level;
+import pvz.logic.gameobjects.Zombie;
+import pvz.logic.gameobjects.ZombieList;
 
 /**
  * Manages the full lifecycle of zombies for a game session.
