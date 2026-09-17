@@ -439,7 +439,7 @@ También necesitaremos las siguientes clases:
 - Durante la ejecución de la aplicación solo se creará un objeto de la clase `Controller`. Lo mismo ocurre para la clase
   `Game` (que representa la partida en curso y solo puede haber una activa).
 
-- Junto con la práctica os proporcionaremos unas [plantillas](./plantillas/practica1/src) con partes del código.
+- Junto con la práctica os proporcionaremos unas [plantillas](../../plantillas/practica1/src) con partes del código.
 
 - En los ficheros de pruebas podrás encontrar trazas de la ejecución; la salida de la práctica debe coincidir con los
   ejemplos.
