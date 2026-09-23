@@ -332,7 +332,7 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 <!-- TOC --><a name="33-observations"></a>
 ## 3.3 Observations
 
-<!-- TOC --><a name="33-observations-implementation-classes"></a>
+<!-- TOC --><a name="observations-implementation-classes"></a>
 ### Observations regarding the implementation classes
 
 - The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
@@ -349,7 +349,7 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 
 The rest of the information needed to implement the assignment will be provided by the lecturer during the lectures and lab classes. The lecturer will give indications of which aspects of the implementation are considered obligatory in order to accept the assignment as correct and which aspects are left to the students' judgement.
 
-Note also that in a *Problem-Based Learning* approach, the student is required to search for the knowledge they need to solve the problem at hand and to apply this knowledge to solving the problem *before* the pertinent information and solutions is presented in lectures. Many studies have shown that knowledge is more easily absorbed and retained if it is acquired in this way, by the student working under the lecturer's guidance but independently. Moreover, perhaps the most important ability to be acquired at university is how to learn independently ("learning to learn").
+Note that in a *Problem-Based Learning* approach, the student is required to search for the knowledge they need to solve the problem at hand and to apply this knowledge to solving the problem *before* the pertinent information and solutions is presented in lectures. Many studies have shown that knowledge is more easily absorbed and retained if it is acquired in this way, by the student working under the lecturer's guidance but independently. Moreover, perhaps the most important ability to be acquired at university is how to learn independently ("learning to learn").
 
 
 <!-- TOC --><a name="4-entrega-de-la-práctica"></a>
