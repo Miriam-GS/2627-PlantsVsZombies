@@ -29,6 +29,7 @@
   * [3.1 Initialisation](#31-inicialización-del-juego)
   * [3.2 Main classes of our application](#32-clases-que-componen-nuestra-aplicación)
     + [3.3 Observations regarding the implementation](#33-observaciones-a-la-implementación)
+    + [3.4 Pedagogic observations](#34-pedagogic-observations)
 - [4. Submission of the assignment](#4-entrega-de-la-práctica)
 - [5. Tests](#5-pruebas)
 <!-- TOC end -->
@@ -36,9 +37,9 @@
 <!-- TOC --><a name="control-de-copias"></a>
 ## Copy detection
 
-For each of the TP assigmments, all the submissions from all the different TP groups will be checked using anti-plagiarism software, firstly, by comparing all of them pairwise and, secondly, by searching to see if any of the code of any of them is copied from other sources on the Internet (without explicit permission from the lecturer) or other sources, or has been generated using aN LLM[^1]. Any plagiarism detected will be reported to the *Comité de Actuación ante Copias* which, after interviewing the student or students in question, will decide whether further action is appropriate, and if so, will propose one of the following sanctions:
-- A grade of zero for the TP-course exam session (*convocatoria*) to which the assignment belongs.
-- A grade of zero for both TP-course exam sessions (*convocatorias*) for that year.
+For each of the TP1 assignments, all the submissions from all the different TP groups will be checked using anti-plagiarism software, firstly, by comparing all of them pairwise and, secondly, by searching to see if any of the code of any of them is copied from other sources on the Internet (without explicit permission from the lecturer) or other sources, or has been generated using aN LLM[^1]. Any plagiarism detected will be reported to the *Comité de Actuación ante Copias* which, after interviewing the student or students in question, will decide whether further action is appropriate, and if so, will propose one of the following sanctions:
+- A grade of zero for the TP1-course exam session (*convocatoria*) to which the assignment belongs.
+- A grade of zero for both TP1-course exam sessions (*convocatorias*) for that year.
 - Opening of disciplinary proceedings (*apertura de un expediente académico*) with the relevant university authority (*Inspección de Servicios*).
 
 <!-- TOC --><a name="1-descripción-de-la-práctica"></a>
@@ -47,11 +48,11 @@ For each of the TP assigmments, all the submissions from all the different TP gr
 <!-- TOC --><a name="11-introducción"></a>
 ## 1.1 Introduction
 
-Plants vs. Zombies is a popular *Tower Defense* type video game for mobiles. According to the Wikipedia:
+Plants vs. Zombies is a popular *Tower Defence* type video game for mobiles. According to the Wikipedia:
 
-> As a horde of zombies approaches along several parallel lanes, the player must defend the home by putting down plants, which fire projectiles at the zombies or otherwise detrimentally affect them... Each plant has a different style of defense, such as shooting, exploding, and blocking. Different types of zombies have their own special behaviors and their own weaknesses to different plants.
+> As a horde of zombies approaches along several parallel lanes, the player must defend the home by putting down plants, which fire projectiles at the zombies or otherwise detrimentally affect them... Each plant has a different style of defence, such as shooting, exploding, and blocking. Different types of zombies have their own special behaviours and their own weaknesses to different plants.
 
-The game is played on a board composed of square tiles on which the player places the different types of plants. The zombies appear on the r.h.s. of the board and move towards the l.h.s. If one of the zombies manages to breach the defenses and reach the l.h.s. of the board, the player loses. To resist the zombie attack, the player must destroy all the zombies, in which case, the player can go to the next level of the game. At each level, new types of plants and zombies with different abilities appear.
+The game is played on a board composed of square tiles on which the player places the different types of plants. The zombies appear on the r.h.s. of the board and move towards the l.h.s. If one of the zombies manages to breach the defences and reach the l.h.s. of the board, the player loses. To resist the zombie attack, the player must destroy all the zombies, in which case, the player can go to the next level of the game. At each level, new types of plants and zombies with different abilities appear.
 
 ![Captura de pantalla de Plant vs Zombies](imgs/plants_vs_zombies.jpg)
 
@@ -73,7 +74,7 @@ In the original game, each plant has a cost which is measured in sun. Sun can be
 
 There are also different types of zombies to be combatted, some of these being :
 
-- **Common zombie**: Commmon garden zombie.
+- **Common zombie**: Common garden zombie.
 - **Conehead zombie**: The traffic cone on its head makes it more resistant than the common garden zombie.
 - **Pole vaulting zombie**: Jumps over the first plant that it encounters.
 - **Buckethead zombie**: The bucket on its head makes it very resistant. 
@@ -145,7 +146,7 @@ In this section, we describe the properties and behaviour of the entities that a
 <!-- TOC --><a name="2-organización-del-juego"></a>
 # 2. Game design
 
-Typically, videogames execute a series of actions repeatedly in a loop until the game (or a level) is finished. This control loop can be quite complicated, as is the case with the [Unity game loop](https://docs.unity3d.com/Manual/ExecutionOrder.html), for example. In our case, each cycle of the control loop comprises a small number of actions, namely:
+Typically, video-games execute a series of actions repeatedly in a loop until the game (or a level) is finished. This control loop can be quite complicated, as is the case with the [Unity game loop](https://docs.unity3d.com/Manual/ExecutionOrder.html), for example. In our case, each cycle of the control loop comprises a small number of actions, namely:
 
 1. ***Draw***: The program prints a textual representation of the state of the game, consisting of the state of the board together with some additional information (see later) on the screen.
 
@@ -224,7 +225,7 @@ Command > help
 - The application must allow commands written in lower-case letters, upper-case letters or a mixture of the two.
 - Plants can be identified either by their initial or by their full name, so the options are: `[p]eashooter`, `[s]unflower`
 - Commands can be identified either by their initial or by the full command name, so the options are `[a]dd`, `[n]one`, `[l]ist`, `[h]elp`, `[e]xit`.
-- An empty command is identified with the `none` commmand that causes the game to skip to the *game action* phase of the control loop without performing any user action.
+- An empty command is identified with the `none` command that causes the game to skip to the *game action* phase of the control loop without performing any user action.
 - If a command is badly written, doesn't exist or can't be executed, an error message is displayed.
 - After a command that doesn't change the state of the game (including a command that results in an error), after printing any output (or error message) to the screen, the game loop skips the phases *Game Action*, *Update* and *Draw* (so a textual representation of the state of the game is **not** displayed), moving straight to the *User Action* phase.
 - After the `reset` command, the game loop skips the phases *Game Action* and *Update* and moves straight to the *Draw* phase.
@@ -331,7 +332,7 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 
 
 <!-- TOC --><a name="33-observaciones-a-la-implementación"></a>
-### 3.3 Observations about the implementación
+### 3.3 Observations about the implementation
 
 - The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
 
@@ -339,7 +340,8 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 
 - The test files contain execution traces; with the same input, the output of your solution to this assignment should coincide with that of these examples.
 
-### 3.4 Pedogogical Observations
+<!-- TOC --><a name="34-pedagocic observations"></a>
+### 3.4 Pedagogic Observations
 
 The rest of the information needed to implement the assignment will be provided by the lecturer during the lectures and lab classes. The lecturer will give indications of which aspects of the implementation are considered obligatory in order to accept the assignment as correct and which aspects are left to the students' judgement.
 
