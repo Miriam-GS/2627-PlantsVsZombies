@@ -263,7 +263,7 @@ It would be of interest to try out different values for the total number and fre
 <!-- TOC --><a name="24-update"></a>
 ## 2.4 Update
 
-The updates that occur on each cycle (in order) are:
+The updates that occur on each cycle (in the following order) are:
 
 1. The Sunflowers produce sun coins.
 2. The Peashooters shoot the zombies that are in reach. A pea hits and damages the first zombie to the right of the peashooter in the same row (if there is one).
