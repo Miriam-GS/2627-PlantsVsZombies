@@ -27,7 +27,7 @@
   * [2.4 Update](#24-update)
 - [3. Implementation details](#3-detalles-de-implementación)
   * [3.1 Initialisation](#31-inicialización-del-juego)
-  * [3.2 Classes of the application](#32-clases-que-componen-nuestra-aplicación)
+  * [3.2 Main classes of our application](#32-clases-que-componen-nuestra-aplicación)
     + [3.3 Observations regarding the implementation](#33-observaciones-a-la-implementación)
 - [4. Submission of the assignment](#4-entrega-de-la-práctica)
 - [5. Tests](#5-pruebas)
