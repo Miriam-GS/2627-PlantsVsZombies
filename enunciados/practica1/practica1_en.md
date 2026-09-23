@@ -247,7 +247,7 @@ The frequency determines the probability that a zombie will appear in a given cy
 |`HARD`   | 5                | 0.2        |
 |`INSANE` | 10               | 0.3        |
 
-When a zombie appears, the program places it (pseudo-)randomly on one of the rows. In order to be able to repeat a given execution, when starting the program, the player can optionally provide a *seed* for the pseudo-random behaviour; if the program is given the same value for the seed on start-up and the player performs exactly the same moves, the exact same execution will be reproduced. If a seed is not provided, one solution is to generate a seed using the system date and time; another is to ask the JRE to choose a seed by creating the object of the `Random` class using the no-argument constructor.
+When a zombie appears, the program places it (pseudo-)randomly on one of the rows. In order to be able to repeat a given execution, when starting the program, the player can optionally provide a *seed* for the pseudo-random behaviour; if the program is given the same value for the seed on start-up and the player executes exactly the same sequence of commands, the exact same execution will be reproduced. If a seed is not provided, one solution is to generate a seed using the system date and time; another is to ask the JRE to choose a seed by creating the object of the `Random` class using the no-argument constructor.
 
 > [!IMPORTANT]
 > **Important for reproducability and coherent behaviour across different implementations**: the random number generator
