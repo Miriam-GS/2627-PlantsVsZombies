@@ -335,14 +335,14 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 <!-- TOC --><a name="observations-implementation-classes"></a>
 ### Observations regarding the implementation classes
 
-- The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
+The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
 
 <!-- TOC --><a name="observations-implementation"></a>
 ### Observations regarding the implementation
 
-- We provide you with some [templates](../../plantillas/practica1/src) containing part of the code for the application.
+We provide you with some [templates](../../plantillas/practica1/src) containing part of the code for the application.
 
-- The test files contain execution traces; with the same input, the output of your solution to this assignment should coincide with that of these examples.
+The test files contain execution traces; with the same input, the output of your solution to this assignment should coincide with that of these examples.
 
 <!-- TOC --><a name="pedagogic observations"></a>
 ### Pedagogic Observations
