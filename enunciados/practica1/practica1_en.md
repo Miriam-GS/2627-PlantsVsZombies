@@ -360,7 +360,7 @@ If you wish, you may also include a folder called `doc` containing the API docum
 
 **Do not include the `.class` files resulting from the compilation in your submission**. These files should **definitely not** be mixed with the source code files in the `src` folder of your project; instead, they should be in a folder called `bin` (see Assignment 0) which you should not submit.
 
-> **Note**: Recall that you can use the option `File > Export` to help you to generate the zip archive.
+Recall that you can use the option `File > Export` to help you to generate the zip archive.
 
 <!-- TOC --><a name="5-pruebas"></a>
 # 5. Tests
@@ -375,7 +375,7 @@ executing program is as expected).
 
 You do not need to have any knowledge of JUnit in order to use these tests.
 
-[!TIP]
+> [!TIP]
 > Make sure that you have JUnit correctly configured on the IDE on which you wish to execute the tests.
 > In Eclipse, for example, the JUnit library must be added to the classpath of the project
 > Project > Properties > Java Build Path > Libraries tab > Add Library > JUnit 5
