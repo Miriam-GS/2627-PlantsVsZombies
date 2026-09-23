@@ -36,7 +36,7 @@
 <!-- TOC --><a name="control-de-copias"></a>
 ## Copy detection
 
-For each of the TP1 assignments, all the submissions from all the different TP groups will be checked using anti-plagiarism software, firstly, by comparing all of them pairwise and, secondly, by searching to see if any of the code of any of them is copied from other sources on the Internet (without explicit permission from the lecturer) or other sources, or has been generated using aN LLM[^1]. Any plagiarism detected will be reported to the *Comité de Actuación ante Copias* which, after interviewing the student or students in question, will decide whether further action is appropriate, and if so, will propose one of the following sanctions:
+For each of the TP1 assignments, all the submissions from all the different TP groups will be checked using anti-plagiarism software, firstly, by comparing all of them pairwise and, secondly, by searching to see if any of the code of any of them is copied from other sources on the Internet (without explicit permission from the lecturer) or other sources, or has been generated using an LLM[^1]. Any plagiarism detected will be reported to the *Comité de Actuación ante Copias* which, after interviewing the student or students in question, will decide whether further action is appropriate, and if so, will propose one of the following sanctions:
 - A grade of zero for the TP1-course exam session (*convocatoria*) to which the assignment belongs.
 - A grade of zero for both TP1-course exam sessions (*convocatorias*) for that year.
 - Opening of disciplinary proceedings (*apertura de un expediente académico*) with the relevant university authority (*Inspección de Servicios*).
