@@ -335,14 +335,9 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 
 - The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
 
-- Junto con la práctica os proporcionaremos unas [plantillas](../../plantillas/practica1/src) con partes del código.
-
-- En los ficheros de pruebas podrás encontrar trazas de la ejecución; la salida de la práctica debe coincidir con los
-  ejemplos.
-
 - We provide you with some [templates](../../plantillas/practica1/src) containing part of the code for the application.
 
-- In the test files you can find execution traces; the output of your solution to this assignment should coincide with these examples.
+- The test files contain execution traces; with the same input, the output of your solution to this assignment should coincide with that of these examples.
 
 ### 3.4 Pedogogical Observations
 
