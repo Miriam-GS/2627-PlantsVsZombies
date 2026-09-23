@@ -25,8 +25,10 @@
 - [3. Implementation details](#3-detalles-de-implementación)
   * [3.1 Initialisation](#31-inicialización-del-juego)
   * [3.2 Main classes of our application](#32-clases-que-componen-nuestra-aplicación)
-  * [3.3 Observations regarding the implementation](#33-observaciones-a-la-implementación)
-  * [3.4 Pedagogic observations](#34-pedagogic-observations)
+  * [3.3 Observations](#33-observations)
+    + [Observations regarding the implementation classes](#observations-implementation-classes)
+    + [Observations regarding the implementation](#observations-implementation)
+    + [Pedagogic observations](#pedagogic-observations)
 - [4. Submission of the assignment](#4-entrega-de-la-práctica)
 - [5. Tests](#5-pruebas)
 <!-- TOC end -->
@@ -327,18 +329,23 @@ The `Controller` class has an attribute to store an element of the `Game` class.
 
 - `PlantsVsZombies`: This class contains the `main` method of the application. This method reads the command-line parameters (there will be one or two of them), creates the unique object of the class `Game` (called the `game`), creates the unique object of the class `Controller` (called the `controller`), passing it the `game`, and then invokes the `run` method of the `controller`.
 
+<!-- TOC --><a name="33-observations"></a>
+## 3.3 Observations
 
-<!-- TOC --><a name="33-observaciones-a-la-implementación"></a>
-### 3.3 Observations about the implementation
+<!-- TOC --><a name="33-observations-implementation-classes"></a>
+### Observations regarding the implementation classes
 
 - The executing application only needs one controller and one game. Accordingly, in any execution of the application there will only ever be a single instance of the `Game` class and a single instance of the `Controller` class (which we refer to as the `game` object and the `controller` object, or simply the `game` and the `controller`). At any given time, you will also only need a single instance of the list classes, though you may decide to create a new one each time a reset is used[^2].
+
+<!-- TOC --><a name="observations-implementation"></a>
+### Observations regarding the implementation
 
 - We provide you with some [templates](../../plantillas/practica1/src) containing part of the code for the application.
 
 - The test files contain execution traces; with the same input, the output of your solution to this assignment should coincide with that of these examples.
 
-<!-- TOC --><a name="34-pedagocic observations"></a>
-### 3.4 Pedagogic Observations
+<!-- TOC --><a name="pedagogic observations"></a>
+### Pedagogic Observations
 
 The rest of the information needed to implement the assignment will be provided by the lecturer during the lectures and lab classes. The lecturer will give indications of which aspects of the implementation are considered obligatory in order to accept the assignment as correct and which aspects are left to the students' judgement.
 
