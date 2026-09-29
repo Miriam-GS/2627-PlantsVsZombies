@@ -406,7 +406,7 @@ La clase `Game` también mantiene el *estado del juego*:
 
 También necesitaremos las siguientes clases:
 
-- `ZombieManager`: Es una clase auxiliar para llevar la cuenta de cuántos zombis quedan por salir. Tiene un método
+- `ZombiesManager`: Es una clase auxiliar para llevar la cuenta de cuántos zombis quedan por salir. Tiene un método
   público `boolean shouldAddZombie()` que se ejecuta en cada ciclo para saber si hay que añadir o no un zombi en ese
   ciclo; si devuelve `true`, la clase `Game` se encarga de colocarlo en una fila aleatoria. Por dentro utiliza `random`
   y una `ZombieList`.
