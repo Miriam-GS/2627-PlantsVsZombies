@@ -302,7 +302,7 @@ The `Game` class offers services to different parts of the program via its publi
 
 - classes of the *View* component invoke methods that return information about the state of the game needed to display the current state.
 
-- classes of the *Model* component, here the game objects (part of the *Model*, as is the `Game` class itself), invoke those methods of `game` that concern interactions between game objects. Since these calls *to* the game from the game objects result from calls *by* the game to the game objects (via the container, usually as part of an update), they are referred to as *callbacks*.
+- classes of the *Model* component, here the game objects (part of the *Model*, as is the `Game` class itself), invoke methods that concern interactions between game objects. Since these calls *to* `game` from the game objects result from calls *by* `game` to the game objects (via the container, usually as part of an update), they are referred to as *callbacks*.
 
 Notice that, currently, all of the public methods of the `Game` are visible and available to all parts of the application: nothing prevents the *Model* invoking a method of `Game` that was designed for the *Controller* to invoke, e.g. a game object invoking the `reset` method, or the *View* invoking a method of `Game` designed for the *Model* to invoke, e.g. the game printer invoking the `isEmpty` method, etc.  One way of limiting this *coupling* while at the same time specifying more clearly the dependencies between the different components of the application (without
 breaking the `Game` class into smaller classes) is to use the Java `interface` construct. The
