@@ -457,7 +457,7 @@ Podríamos saberlo usando `instanceof` o `getClass()`, pero eso está **terminan
 
 > [!IMPORTANT]
 > Usar `instanceof`, ya sea de manera directa o indirecta (es decir, _disfrazando_ la funcionalidad con algún método
-> del tipo `isZombie()` / `isPeashooter()`, ...) está **terminantemente prohibido** y supone la suspensión directa de la
+> del tipo `isZombie()` / `isPeashooter()`, ...) está **terminantemente prohibido** y supone el suspenso directo de la
 > práctica
 
 El problema es el siguiente: cuando un `Zombie` o un `Peashooter` quiere atacar algo no sabemos si en una casilla
