@@ -599,7 +599,7 @@ In addition,
 - the external representation is not case-sensitive, i.e. the letters it contains may be written in lower-case, upper-case or a mixture of the two,
 - the abbreviations ``S``, ``P`` and ``CZ`` can be used for the game objects ``sunflower``, ``peashooter`` and ``commonZombie`` respectively)
 
-**Parsing the external representation in an object factory**
+**Parsing the external representation in object factories**
 
 Next we add object factories to our implementation, the idea being to separate the object-creation logic from the creation itself.
 The mechanism is pratically the same as that of the `Command` pattern. The classes implementing the factories, `PlantFactory` and
@@ -657,7 +657,7 @@ which returns the string to be returned by the `list` command. The implementatio
 similar to that of the `commandHelp` command of the `CommandGenerator` class, i.e. via calls to a `listText` method of the
 the game object hierarchy that is similar to the `helpText` method of the command hierarchy. 
 
-**Four commands that use the factories**
+**Four commands that use the object factories**
 
 Now we have defined the two factories, we modify the `addPlant` command so that
 
