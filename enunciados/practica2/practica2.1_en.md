@@ -657,6 +657,8 @@ which returns the string to be returned by the `list` command. The implementatio
 similar to that of the `commandHelp` command of the `CommandGenerator` class, i.e. via calls to a `listText` method of the
 the game object hierarchy that is similar to the `helpText` method of the command hierarchy. 
 
+**Four commands that use the factories**
+
 Now we have defined the two factories, we modify the `addPlant` command so that
 
 - its argument is now exactly an external representation (do not forget to change the string contained in the constant attribute
