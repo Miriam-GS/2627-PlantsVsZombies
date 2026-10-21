@@ -501,7 +501,8 @@ not depend on any concrete implementation, is in accordance with the **D** of th
 methods used by the `Game` and by the `GameObjectContainer` in interfaces and then ensure that the latter
 classes only refer to these interfaces, never to the abstract class itself.
 
-[^10]: Consider replacing the current `Position` class with a [Java `record`](https://docs.oracle.com/en/java/javase/17/language/records.html).
+[^10]: Consider replacing the `Position` class of assignment 1 (which should have been made immutable)
+with a [Java `record`](https://docs.oracle.com/en/java/javase/17/language/records.html).
 
 [^11]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
 
