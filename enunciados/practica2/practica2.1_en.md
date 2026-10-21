@@ -189,7 +189,7 @@ The following classes are involved in our application of the *command pattern*:
     by the `help` command.
 
 - `Controller`: the code of the controller class is now reduced to only a few lines since most of the
-  functionality that it included in Assignment 1 is now delegated to the concrete command classes. Note
+  functionality that it included in Assignment 1 is now delegated to the command classes. Note
   that the *Controller* MVC component contains the `Controller` class and the classes of the `Command`
   class hierarchy [^6].
 
