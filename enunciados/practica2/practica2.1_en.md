@@ -185,8 +185,8 @@ The following classes are involved in our application of the *command pattern*:
     updating the view consists of printing an error message instead of printing the current state of the
     game.
     
-  - `public String helpText()` which returns that part of the text concerning this command that is returned
-    by the `help` command.
+  - `public String helpText()` which returns that part of the text concerning this command that is printed
+    on the console by the `help` command.
 
 - `Controller`: the code of the controller class is now reduced to only a few lines since most of the
   functionality that it included in Assignment 1 is now delegated to the command classes. Note
