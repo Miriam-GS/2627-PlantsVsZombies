@@ -684,7 +684,102 @@ version of the game):
 <!-- TOC --><a name="game-item-interface"></a>
 ### The `GameItem` interface and callbacks
 
-*** To be added shortly ***
+We now turn our attention to the interaction between different elements of the game.
+How can we detect when interactions should take place and then execute them?
+Solutions involving code in the Game that first uses `instanceof` or `getClass` to discover the
+dynamic type of the objects being handled and subsequently implements the interaction behaviour,
+along the lines of:
+```java
+public void update() {
+    //...
+    GameObject other = game.getGameObjectInPosition(col, row);
+    // alternative: other.getClass().getName().equals("Sunflower")
+    if(other != null && other.getClass() == Sunflower.class) {  
+        ((Sunflower) other).setAlive(false);
+    }
+    //...
+}
+```
+break encapsulation, break the genericity of the `Game` class, give responsibilities to the `Game`
+class which it should not have[^14], use ugly casting, and are **absolutely forbidden**. As are
+solutions that use a "DIY" `getClass` / `instanceof`, along the lines of:
+```java
+public void update() {
+    //...
+    GameObject other = game.getGameObjectInPosition(col, row);
+    if(other != null && other.isSunflower()) {  
+        ((Sunflower) other).setAlive(false);
+    }
+    //...
+}
+```
+
+We require a solution in which
+
+- each concrete game object class is responsible for its own interaction behaviour and for
+  processing its own data, so that modifying or extending this behaviour does not require any
+  modification to other classes,
+- the implementation of an attack does not involve breaking encapsulation.
+
+Regarding the first point, to that end,
+we can define a method of the `GameObject` class called `receiveZombieAttack`
+to implement the behaviour of game objects when they are attacked by a zombie
+(in the zombie class, the body of this method will be empty since zombies do not attack
+zombies).
+
+Regarding the second point, in the general case, an attack, or more generally speaking an
+interaction, may involve the invocation of several methods on the object that receives the
+interaction (e.g. methods querying its state). It would be handy for the attacking object
+to be able to ask the `game` which asks the `container` for the game
+object on a given position (if any), in order to susequently invoke as many of its methods as
+is required for the interaction. However a method in the `container` and in the `game` that
+returns a game object that is on the board would be breaking encapsulation.
+
+In the first assignment, to avoid this encapsulation-breaking, you should have implemented
+attacks by ensuring that all calls from the attacking object to the attacked object go via
+the `game` (i.e. delegation; the chain of  delegation would now also have to include the
+`container`). However, using Java
+interfaces, the `container` and the `game` *can* return the game object on a given
+position *as long as the static type of this game object is an interface which severely
+restricts what the receiving game object can do with it*. We choose to implement interactions
+in this way via an interface called `GameItem`[^15] which currently has only one method:
+```java
+public interface GameItem {
+    boolean receiveZombieAttack(int damage);
+    // ...
+}
+
+public class GameObject implements GameItem {
+    // ...
+}
+
+public class Zombie extends GameObject {
+    //...
+
+    public void update() {
+        //...
+        GameItem item = game.getGameItemInPosition(col, row);
+        if(item != null ) {  
+            item.receiveZombieAttack(this.damage);
+        }
+        //...
+    }
+}
+```
+With the above code, the caller of the `getGameItemInPosition` method cannot do
+anything with the object returned by this method except call the
+`receiveZombieAttack` method on it, since this is the only method that is defined
+in the static type (i.e. the `GameItem` interface).
+
+For the moment, the `GameItem` interface is very simple but as we extend our program
+we may add more methods to it in order to add other types of interactions 
+between different game objects.
+
+[^14]: **Design principles**: Contradicting the **S** of the **SOLID** design principles
+(the **S**ingle responsibility principle).
+
+[^15]: **Design principles**: Note that this solution is also more in accordance with the **D**
+of the **SOLID** design principles.
 
 <!-- TOC --><a name="generalising-interactions"></a>
 ### Generalising the interactions between game objects
