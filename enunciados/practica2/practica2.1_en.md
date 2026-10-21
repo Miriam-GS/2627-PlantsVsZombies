@@ -662,7 +662,7 @@ the game object hierarchy that is similar to the `helpText` method of the comman
 Now we have defined the two factories, we modify the `addPlant` command so that
 
 - its argument is now exactly an external representation (do not forget to change the string contained in the constant attribute
-  `COMMAND_ADDPLANT_DETAILS` of the `Messages` class to `"[a]ddPlant <col>-<row> <plant>"`); if the argument is
+  `COMMAND_ADD_PLANT_DETAILS` of the `Messages` class to `"[a]ddPlant <col>-<row> <plant>"`); if the argument is
   invalid, i.e. it is not the external representation of a plant, including the case where the position is invalid due
   to being off the board, the following error message must be displayed: ``Invalid plant creation: <col>-<row> <plant>``.
 - the `execute` method of the `AddPlantCommand` class is implemented via a call to the `parse` method of the `PlantFactory`.
@@ -676,7 +676,7 @@ version of the game):
    which is almost identical to the `addPlant` command but using the `parse` method of the`ZombieFactory` instead of the
    `parse` method of the `PlantFactory`; it should decrease the number of zombies to appear. If the argument is invalid,
    the following error message should be displayed: ``Invalid zombie creation: <col>-<row> <zombie>``
-- `listZombies` (abbreviation `lz`, details: `"[l]ist[Z]ombies"`, help: `"print the list of available zombies; debug command"`.),
+- `listZombies` (abbreviation `lz`, details: `"[l]ist[Z]ombies"`, help: `"print the list of available zombies; debug command"`),
    which is almost identical to the `list` command but using a `listZombies` method of the `ZombieFactory` instead of the
    `listPlants` method of the `PlantFactory`.
 
