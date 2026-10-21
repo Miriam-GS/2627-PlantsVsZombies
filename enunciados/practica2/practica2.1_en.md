@@ -198,11 +198,15 @@ The following classes are involved in our application of the *command pattern*:
 syntactic validity of the arguments (whether it is possible to create the internal representation) should
 be checked in the parsing of the *Controller* MVC component whereas semantic validity of the arguments
 (whether the information of the arguments is in accordance with the logic, in our case, with the rules of
-the game) should be checked in the *Model* MVC component. However,
-the division between syntactic and semantic validity is not always obvious. For example, if the position
-of a game object is an attribute of that game object, a valid game object cannot be created by the parsing
-of a string such as the argument to the `addPlant` command without checking whether the position is a valid
-position, so in this case the validity of the position must be considered syntactic validity.
+the game) should be checked in the *Model* MVC component. However, the division between syntactic and
+semantic validity is sometimes debatable. For example, if the position of a game object is an attribute of
+that game object, creating a valid game object by parsing a string such as the argument to the
+`addPlant` command inevitably involves checking whether the position is a valid position. If we consider
+the position validity to be semantic, we should parse the string and create the corresponding game object
+in the *Model* (in our case, in a method of the `Game` class) while if we consider the position validity
+to be syntactic, we can parse the string and create the corresponding game object in the *Controller*
+(in our case in the `parse` method of the corresponding command class). For reasons that will become clear
+in assignment 3, we recommend the former.
 
 [^5]: **Design principles**: Fragile code is code which makes implicit assumptions about its
 environment (where this refers to the rest of the program code together with the program environment)
