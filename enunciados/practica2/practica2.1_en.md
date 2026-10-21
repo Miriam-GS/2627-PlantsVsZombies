@@ -640,7 +640,7 @@ each plant of the `availablePlants` list, which checks if the `objWords` argumen
 (split into tokens) of an object of its class and, if so, returns a new instance of that class with the required characteristics,
 otherwise, it returns `null`. Similarly with the `parse` method of the `ZombieFactory` class, which calls a `parse` method
 in each zombie of the list of `availableZombies`. Observe that the `parse` method of each game object class should parse the
-first token of the `objWords` argument (<col>-<row>) by calling a `parse` method defined in the `Position` class.
+first token of the `objWords` argument (`"<col>-<row>"`) by calling a `parse` method defined in the `Position` class.
 Notice that the simplest of the concrete `Plant` and `Zombie` subclasses can simply use a `parse` method
 inherited from the `Plant` or `Zombie` class, or even from the `GameObject` class. If convenient, it is also possible for a
 `parse` method of a concrete class to complete a superclass `parse` method (see "partial redefinition" in the slides).
