@@ -644,7 +644,7 @@ first token of the `objWords` argument (`"<col>-<row>"`) by calling a `parse` me
 Notice that the simplest of the concrete `Plant` and `Zombie` subclasses can simply use a `parse` method
 inherited from the `Plant` or `Zombie` class, or even from the `GameObject` class. If convenient, it is also possible for a
 `parse` method of a concrete class to complete a superclass `parse` method (see "partial redefinition" in the slides).
-To enable the inheritance of `parse` methods which are not allowed to return `this`, the actual creation should be done in a
+To enable the inheritance of `parse` methods that are not allowed to return `this`, the actual creation should be done in a
 separate `createInstance` method that is called from the `parse` method and that is overwritten in each concrete `GameObject`
 subclass (by a method with a covariant return type).
 
