@@ -667,8 +667,10 @@ Now we have defined the two factories, we modify the `addPlant` command so that
   to being off the board, the following error message must be displayed: ``Invalid plant creation: <col>-<row> <plant>``.
 - the `execute` method of the `AddPlantCommand` class is implemented via a call to the `parse` method of the `PlantFactory`.
 
-You must also modify the zombie creation mechanism so as to use the ZombieFactory. Finally, you must define the following
-debugging commands (i.e. commands that would not be available to the user in a production version of the game):
+You must also modify the zombie creation mechanism so as to use the `parse` method of the `ZombieFactory`.
+
+Finally, you must define the following debugging commands (i.e. commands that would not be available to the user in a production
+version of the game):
 
 - `addZombie` (shorcut: `"z"`, details: `"add[Z]ombie <col>-<row> <zombie>"`, help: `"add a zombie in position (col, row); debug command"`),
    which is almost identical to the `addPlant` command but using the `parse` method of the`ZombieFactory` instead of the
