@@ -186,7 +186,8 @@ The following classes are involved in our application of the *command pattern*:
     game.
     
   - `public String helpText()` which returns that part of the text concerning this command that is printed
-    on the console by the `help` command.
+    on the console by the `help` command. You should be able to place the body of the `helpText` method in
+    the `AbstractCommand` class with no need to overwrite it.
 
 - `Controller`: the code of the controller class is now reduced to only a few lines since most of the
   functionality that it included in Assignment 1 is now delegated to the command classes. Note
