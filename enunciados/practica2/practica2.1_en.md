@@ -154,6 +154,13 @@ The following classes are involved in our application of the *command pattern*:
     // Implementation of the execute method
   }
   ```
+  where the corresponding constants of the `Messages` class have the following values:
+  ```java
+   	public static final String COMMAND_HELP_NAME = "help";
+	public static final String COMMAND_HELP_SHORTCUT = "h";
+	public static final String COMMAND_HELP_DETAILS = "[h]elp";
+	public static final String COMMAND_HELP_HELP = "print this help message";
+  ```
   
   Each concrete command class has (at least) the following four methods (note that they may be inherited):
 
@@ -187,10 +194,15 @@ The following classes are involved in our application of the *command pattern*:
   class hierarchy [^6].
 
 
-[^4]: **Design principles**: Syntactic validity of the arguments should be checked in the parsing of the *Controller*
-MVC component whereas semantic validity of the arguments (e.g. a position is invalid due to being off the board)
-should be checked in the *Model* MVC component. This is in accordance with the design principle known as
-*Separation of Concerns*.
+[^4]: **Design principles**: In accordance with the design principle known as *Separation of Concerns*,
+syntactic validity of the arguments (whether it is possible to create the internal representation) should
+be checked in the parsing of the *Controller* MVC component whereas semantic validity of the arguments
+(whether the information of the arguments is in accordance with the logic, in our case, with the rules of
+the game) should be checked in the *Model* MVC component. However,
+the division between syntactic and semantic validity is not always obvious. For example, if the position
+of a game object is an attribute of that game object, a valid game object cannot be created by the parsing
+of a string such as the argument to the `addPlant` command without checking whether the position is a valid
+position, so in this case the validity of the position must be considered syntactic validity.
 
 [^5]: **Design principles**: Fragile code is code which makes implicit assumptions about its
 environment (where this refers to the rest of the program code together with the program environment)
@@ -268,12 +280,12 @@ the output of the help command (so must be called by the `execute` method of the
 class). Like the `parse` command, it accomplishes its task by traversing the `AVAILABLE_COMMANDS`
 list but in this case invoking the `helpText()` method of each object on the list.
 
-The following is a skeleton of this code:
+The following is a skeleton of this code [^7]:
 
 ```java
 public class CommandGenerator {
 
-    private static final List<Command> AVAILABLE_COMMANDS = Arrays.asList(
+    private static final List<Command> AVAILABLE_COMMANDS = List.of(
         new UpdateCommand(),
         new ResetCommand(),
         new HelpCommand(),
@@ -292,6 +304,9 @@ public class CommandGenerator {
 }
 ```
 
+[^7]: For a comparison between `List.of` and `Arrays.asList` see [Difference Between Arrays.asList() and List.of()](https://www.baeldung.com/java-arrays-aslist-vs-list-of)
+
+
 
 <!-- TOC --><a name="projections-of-the-game-class"></a>
 ### Using interfaces to define different projections of the `Game` class
@@ -308,7 +323,7 @@ Notice that, currently, all of the public methods of the `Game` are visible and 
 breaking the `Game` class into smaller classes) is to use the Java `interface` construct. The
 idea is to use interfaces to define different projections of the public `Game` functionality (i.e. partial views on the services offered by the `Game` class), each containing the methods used by one of the three components of the application, so that
 the code of each component can refer only to the corresponding interface, never to the `Game` class itself. The compiler will then detect any attempt to invoke a method that is
-not declared on the corresponding interface[^7]. To that end, we define the following three interfaces :
+not declared on the corresponding interface[^8]. To that end, we define the following three interfaces :
 
 - `GameWorld` to represent the *Model*'s internal view of the services offered by the `Game` class.
 
@@ -375,7 +390,7 @@ Finally, in each of the three components of the program, we must replace each oc
 public abstract void execute(GameModel game, GameView view);
 ```
 
-[^7]: **Design principles**: This is in accordance with the **I** of the **SOLID** design principles (the *Interface Segregation Principle*).
+[^8]: **Design principles**: This is in accordance with the **I** of the **SOLID** design principles (the *Interface Segregation Principle*).
 
 
 
@@ -396,7 +411,7 @@ called `GameObject`, from which all the concrete game object classes
 (currently `Peashooter`, `Sunflower` and `CommonZombie`) derive. So *the code of the `game` and of the
 `container` must **not** seek to
 identify the dynamic type (i.e. which concrete subclass of `GameObject`) of the objects it is
-handling* [^8].
+handling* [^9].
 
 The `GameObject` class should contain all the attributes and methods that are common to all the concrete
 game object classes. Each concrete class inherits attributes and methods from the `GameObject` class and
@@ -408,7 +423,7 @@ implements its own behaviour by
 
 To specify the attributes and methods of the `GameObject` class, we need to think about the behaviour that
 is common to all game objects. All game objects have a position on the board so the `GameObject` will contain the
-corresponding attribute[^9]. All of them also need an attribute to store the `game` and a
+corresponding attribute[^10]. All of them also need an attribute to store the `game` and a
 boolean attribute to indicate whether they are alive or not. They have, at least, methods to manipulate their
 position and a method to communicate whether they are alive or not. They will also have the method:
 
@@ -468,7 +483,7 @@ Observations regarding the game object hierarchy:
   not to implement the `GameObject` methods `onEnter` and `onExit` as abstract.
   
 - attributes and non-abstract methods should always be placed in the highest class possible of the
-  inheritance hierarchy [^10]
+  inheritance hierarchy [^12]
   
 - anticipating the introduction of more types of zombies and more types of plants, we suggest you also create
   two abstract subclasses of `GameObject` called `Plant` and `Zombie`, where `Peashooter` and `Sunflower`
@@ -476,15 +491,22 @@ Observations regarding the game object hierarchy:
 
 
 
-[^8]: **Design principles**: ensuring that `Game` and `GameObjectContainer` are high-level classes that do
+[^9]: **Design principles**: ensuring that `Game` and `GameObjectContainer` are high-level classes that do
 not depend on any concrete implementation, is in accordance with the **D** of the **SOLID** design principles
 (the ***D**ependency Inversion Principle*). A possible improvement would be to place those of the `GameObject`
 methods used by the `Game` and by the `GameObjectContainer` in interfaces and then ensure that the latter
 classes only refer to these interfaces, never to the abstract class itself.
 
-[^9]: Consider replacing the current `Position` class with a [Java `record`](https://docs.oracle.com/en/java/javase/17/language/records.html).
+[^10]: Consider replacing the current `Position` class with a [Java `record`](https://docs.oracle.com/en/java/javase/17/language/records.html).
 
-[^10]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
+[^11]: **Design principles**: This is in accordance with the DRY (*Don't Repeat Yourself*) design principle. 
+
+[^12]: `ArrayList` is a class defined in the Java collections library. The classes of this library
+make use of *parametric polymorphism*, known as *Java generics* in Java, first
+used in functional programming in the mid-70s and introduced in Java in 2004 (with Java 5).
+The polymorphism associated with inheritance is called *inclusion polymorphism* or *subtype polymorphism*.
+Java generics will be studied in detail in the TP2 course.
+
 
 <!-- TOC --><a name="game-object-container"></a>
 ### Delegating functionality of the `game` to the `container`
@@ -519,7 +541,7 @@ Notice that, thanks to the use of the `GameObject` abstract class and associated
   for example, it should not export the value of any of the attributes of the `ArrayList` class that it is
   using to store the game objects (such as the number of elements currently in the array). This information
   hiding enables the implementation of the container to be changed without affecting the rest of the program
-  code [^12].
+  code [^13].
 
 - Similarly to the methods of the `Game` class, the methods of the container class do not know which
   game objects are being stored and manipulated, dealing only in abstractions. Neither the
@@ -532,13 +554,7 @@ Notice that, thanks to the use of the `GameObject` abstract class and associated
   attacked, etc. The code provided still assumes the use of a `ZombieManager` but with a reduced role
   w.r.t. assignment 1, since the zombies themselves are now stored by the container in the common store.
 
-[^11]: `ArrayList` is a class defined in the Java collections library. The classes of this library
-make use of *parametric polymorphism*, known as *Java generics* in Java, first
-used in functional programming in the mid-70s and introduced in Java in 2004 (with Java 5).
-The polymorphism associated with inheritance is called *inclusion polymorphism* or *subtype polymorphism*.
-Java generics will be studied in detail in the TP2 course.
-
-[^12]: **Design principles**: This is in accordance with the design principle known as *Separation of Concerns* or,
+[^13]: **Design principles**: This is in accordance with the design principle known as *Separation of Concerns* or,
 more specific to classes in OOP, the *Single Responsibility Principle*, the **S** of the **SOLID** design
 principles. As a *sanity check*, imagine, for example, that you decided to change the implementation of the
 `GameObjectContainer` to store the game objects in a 2-dimensional array of objects that do not know
@@ -548,7 +564,113 @@ introduce any modifications in the code of the `Game` class of your implementati
 <!-- TOC --><a name="game-object-factories"></a>
 ### Game object factories
 
-*** To be added shortly ***
+**The game-object external-representation format**
+
+The specification of this textual format is as follows:
+```
+    position concrete-gameobject-name values-of-externally-represented-attibutes-of-that-game-object-instance
+```
+where none of the currently-used game objects have externally-represented attributes. We clarify with the following examples of valid strings:
+
+- The string:
+  ```
+  "1-2 Sunflower"
+  ```
+  represents an object of the class `Sunflower` at position col 1, row 2.
+
+- The string:
+  ```
+  "0-1 Peashooter",
+  ```
+  represents an object of the class `Peashooter` at position col 0, row 1. 
+
+- The string:
+  ```
+  "3-6 CommonZombie",
+  ```
+  represents an object of the class `CommonZombie` at position col 3, row 6
+  
+In addition,
+
+- the external representation is not case-sensitive, i.e. the letters it contains may be written in lower-case, upper-case or a mixture of the two,
+- the abbreviations ``S``, ``P`` and ``CZ`` can be used for the game objects ``sunflower``, ``peashooter`` and ``commonZombie`` respectively)
+
+**Parsing the external representation in an object factory**
+
+Next we add object factories to our implementation, the idea being to separate the object-creation logic from the creation itself.
+The mechanism is pratically the same as that of the `Command` pattern. The classes implementing the factories, `PlantFactory` and
+`ZombieFactory`, should be placed in the ``gameobjects`` package; both are very similar to the `CommandGenerator`
+class. The former has the following method:
+```java
+	public static Plant parse (String objWords[], GameWorld game);
+```
+and the latter has the following method:
+```java
+	public static Zombie parse (String objWords[], GameWorld game);
+```
+where the array of strings `objWords` contains an external representation (split into tokens). An invocation of this method that creates
+the plant or zombie whose external representation (split into tokens) is contained in `objWords` is as follows:
+```java
+Plant plant = PlantFactory.parse(String objWords[], GameWorld game);
+Zombie zombie = ZombieFactory.parse(String objWords[], GameWorld game);
+
+```
+Note that the code of the factories is generic (i.e. does not know the dynamic type of the objects being created), except for the list of
+available plants in the plant factory:
+```java
+private static final List<GameObject> availablePlants = List.of(
+	new Sunflower(),
+	new Peashooter()
+	// more plant types will be added later
+);
+```
+and the list of available zombies in the zombie factory:
+```java
+private static final List<GameObject> availableZombies = List.of(
+	new CommonZombie()
+	// more zombie types will be added later
+);
+```
+both of which are similar to the list of available commands in the `CommandGenerator` class. The elements of these lists
+use no-argument constructors, therefore each concrete subclass of `GameObject` must have such a constructor. What should be
+the access modifier for these constructors?
+
+Similarly to the `parse` method of the `CommandGenerator`, the `parse` method of the `PlantFactory` calls a `parse` method in
+each plant of the `availablePlants` list, which checks if the `objWords` argument contains an external representation
+(split into tokens) of an object of its class and, if so, returns a new instance of that class with the required characteristics,
+otherwise, it returns `null`. Similarly with the `parse` method of the `ZombieFactory` class, which calls a `parse` method
+in each zombie of the list of `availableZombies`. Observe that the `parse` method of each game object class should parse the
+first token of the `objWords` argument (<col>-<row>) by calling a `parse` method defined in the `Position` class.
+Notice that the simplest of the concrete `Plant` and `Zombie` subclasses can simply use a `parse` method
+inherited from the `Plant` or `Zombie` class, or even from the `GameObject` class. If convenient, it is also possible for a
+`parse` method of a concrete class to complete a superclass `parse` method (see "partial redefinition" in the slides).
+To enable the inheritance of `parse` methods which are not allowed to return `this`, the actual creation should be done in a
+separate `createInstance` method that is called from the `parse` method and that is overwritten in each concrete `GameObject`
+subclass (by a method with a covariant return type).
+
+The plant factory should also have a method similar to the `commandHelp` method of the CommandGenerator, called `listPlants`
+which returns the string to be returned by the `list` command. The implementation of this `listPlants` method should be
+similar to that of the `commandHelp` command of the `CommandGenerator` class, i.e. via calls to a `listText` method of the
+the game object hierarchy that is similar to the `helpText` method of the command hierarchy. 
+
+Now we have defined the two factories, we modify the `addPlant` command so that
+
+- its argument is now exactly an external representation (do not forget to change the string contained in the constant attribute
+  `COMMAND_ADDPLANT_DETAILS` of the `Messages` class to `"[a]ddPlant <col>-<row> <plant>"`); if the argument is
+  invalid, i.e. it is not the external representation of a plant, including the case where the position is invalid due
+  to being off the board, the following error message must be displayed: ``Invalid plant creation: <col>-<row> <plant>``.
+- the `execute` method of the `AddPlantCommand` class is implemented via a call to the `parse` method of the `PlantFactory`.
+
+You must also modify the zombie creation mechanism so as to use the ZombieFactory. Finally, you must define the following
+debugging commands (i.e. commands that would not be available to the user in a production version of the game):
+
+- `addZombie` (shorcut: `"z"`, details: `"add[Z]ombie <col>-<row> <zombie>"`, help: `"add a zombie in position (col, row); debug command"`),
+   which is almost identical to the `addPlant` command but using the `parse` method of the`ZombieFactory` instead of the
+   `parse` method of the `PlantFactory`; it should decrease the number of zombies to appear. If the argument is invalid,
+   the following error message should be displayed: ``Invalid zombie creation: <col>-<row> <zombie>``
+- `listZombies` (abbreviation `lz`, details: `"[l]ist[Z]ombies"`, help: `"print the list of available zombies; debug command"`.),
+   which is almost identical to the `list` command but using a `listZombies` method of the `ZombieFactory` instead of the
+   `listPlants` method of the `PlantFactory`.
 
 <!-- TOC --><a name="game-item-interface"></a>
 ### The `GameItem` interface and callbacks
@@ -564,22 +686,3 @@ introduce any modifications in the code of the `Game` class of your implementati
 ## Testing
 
 *** To be added shortly ***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
