@@ -655,8 +655,8 @@ subclass (by a method with a covariant return type).
 
 The plant factory should also have a method similar to the `commandHelp` method of the CommandGenerator, called `listPlants`
 which returns the string to be returned by the `list` command. The implementation of this `listPlants` method should be
-similar to that of the `commandHelp` command of the `CommandGenerator` class, i.e. via calls to a `listText` method of the
-the game object hierarchy that is similar to the `helpText` method of the command hierarchy. 
+similar to that of the `commandHelp` command of the `CommandGenerator` class, i.e. via calls to a `getDescription` method
+of the game object hierarchy that is similar to the `helpText` method of the command hierarchy. 
 
 **Four commands that use the object factories**
 
