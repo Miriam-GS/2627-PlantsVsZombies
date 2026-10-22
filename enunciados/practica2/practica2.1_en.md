@@ -707,7 +707,7 @@ solutions that use a "DIY" `getClass` / `instanceof`, along the lines of:
 public void update() {
     //...
     GameObject other = game.getGameObjectInPosition(col, row);
-    if(other != null && other.isSunflower()) {  
+    if(other != null && other.*isSunflower()*) {  
         ((Sunflower) other).setAlive(false);
     }
     //...
@@ -722,31 +722,32 @@ We require a solution in which
 - the implementation of an attack does not involve breaking encapsulation.
 
 Regarding the first point, to that end,
-we can define a method of the `GameObject` class called `receiveZombieAttack`
-to implement the behaviour of game objects when they are attacked by a zombie
-(in the zombie class, the body of this method will be empty since zombies do not attack
-zombies).
+we define `GameObject` methods `receiveZombieAttack` and `receivePlantAttack`,
+to implement the behaviour of game objects when they are attacked by a zombie, resp. a plant
+(in zombie classes, resp. plant classes, the body of `receiveZombieAttack`, resp.
+`receivePlantAttack`, will be empty since zombies do not attack zombies and plants do not
+attack plants).
 
 Regarding the second point, in the general case, an attack, or more generally speaking an
 interaction, may involve the invocation of several methods on the object that receives the
 interaction (e.g. methods querying its state). It would be handy for the attacking object
 to be able to ask the `game` which asks the `container` for the game
-object on a given position (if any), in order to susequently invoke as many of its methods as
+object on a given position (if any), in order to subsequently invoke as many of its methods as
 is required for the interaction. However a method in the `container` and in the `game` that
 returns a game object that is on the board would be breaking encapsulation.
 
 In the first assignment, to avoid this encapsulation-breaking, you should have implemented
 attacks by ensuring that all calls from the attacking object to the attacked object go via
-the `game` (i.e. delegation; the chain of  delegation would now also have to include the
-`container`). However, using Java
+the `game` (i.e. delegation; in assignment 2 such a chain of delegation would have to include
+the `container`). However, using Java
 interfaces, the `container` and the `game` *can* return the game object on a given
-position *as long as the static type of this game object is an interface which severely
+position *as long as the static type of the game object returned is an interface which severely
 restricts what the receiving game object can do with it*. We choose to implement interactions
-in this way via an interface called `GameItem`[^15] which currently has only one method:
+in this way via an interface called `GameItem`[^15] which currently has only two methods:
 ```java
 public interface GameItem {
     boolean receiveZombieAttack(int damage);
-    // ...
+    boolean receivePlantAttack(int damage);
 }
 
 public class GameObject implements GameItem {
@@ -767,13 +768,12 @@ public class Zombie extends GameObject {
 }
 ```
 With the above code, the caller of the `getGameItemInPosition` method cannot do
-anything with the object returned by this method except call the
-`receiveZombieAttack` method on it, since this is the only method that is defined
-in the static type (i.e. the `GameItem` interface).
+anything with the game object returned by this method except call one of the two attack
+methods, since these are the only game object methods that are defined in the static type
+(i.e. the `GameItem` interface).
 
-For the moment, the `GameItem` interface is very simple but as we extend our program
-we may add more methods to it in order to add other types of interactions 
-between different game objects.
+As we extend our program we may modify the `GameItem` interface in order
+to add more specific and/or more complex interactions.
 
 [^14]: **Design principles**: Contradicting the **S** of the **SOLID** design principles
 (the **S**ingle responsibility principle).
