@@ -707,7 +707,7 @@ solutions that use a "DIY" `getClass` / `instanceof`, along the lines of:
 public void update() {
     //...
     GameObject other = game.getGameObjectInPosition(col, row);
-    if(other != null && other.*isSunflower()*) {  
+    if(other != null && other.isSunflower()) {  
         ((Sunflower) other).setAlive(false);
     }
     //...
