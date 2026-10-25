@@ -5,4 +5,5 @@
 
 ### Práctica 2
 - [Enunciado - Parte 1](./enunciados/practica2/practica2-1.md)
+- [Enunciado - Parte 2](./enunciados/practica2/practica2-2.md)
 - [Plantillas](./plantillas/practica2/src/pvz/view)
